@@ -17,7 +17,7 @@ assessmentScore = int(input("Please enter students assesment score: "))
 finalExamScore = int(input("Please enter students final exam score: "))
 
 def GradePercentage(sname,hscore,ascore,fscore):
-    print("Hello ", sname, ". Your overall exam percentage is as follows: ")
+    print(f"Hello, {sname}. Your overall exam percentage is as follows: ")
     overallScore = hscore + ascore + fscore
     maxscore = homework100 + assesment100 + finalexam100
     percentage = float((overallScore/maxscore)*100)
@@ -26,9 +26,32 @@ def GradePercentage(sname,hscore,ascore,fscore):
     return percentage
 
 
-def GradeFunction():
+'''
+Create an application which asks the user for an input for a maths mark, a chemistry mark and a physics mark.
+Add the marks together, then work out the overall percentage. And print it out to the screen.
+If the percentage is below 40%, print “You failed”
+If the percentage is 40% or higher, print “D”
+If the percentage is 50% or higher, print “C”
+If the percentage is 60% or higher, print “B”
+If the percentage is 70% or higher, print “A”
+'''
+
+
+def GradeFunction(percentage):
+    if float(percentage) < 40:
+        grade = "You failed"
+    elif float(percentage) < 50:
+        grade = "D"
+    elif float(percentage) < 60:
+        grade = "C"
+    elif float(percentage) < 70:
+        grade = "B"
+    else:
+        grade = "A"
     return grade
 
 
 grade_percentage = GradePercentage(studentName,homeworkScore,assessmentScore,finalExamScore)
-print(grade_percentage, "%")
+grade_letter = GradeFunction(grade_percentage)
+print(f"{grade_percentage}%")
+print(f"{studentName}, you received a {grade_letter}")
